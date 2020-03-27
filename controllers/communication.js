@@ -5,6 +5,11 @@ const bc = require('bigint-conversion');
 
 let keyPair;
 
+/**
+ * Get the public Key function
+ * @param {*} req Request
+ * @param {*} res Response
+ */
 async function getPublicKey(req, res) {
   try {
     keyPair = await rsa.generateRandomKeys();
@@ -17,6 +22,11 @@ async function getPublicKey(req, res) {
   }
 }
 
+/**
+ * Encrypt a message
+ * @param {*} req Request
+ * @param {*} res Response
+ */
 async function postMsg(req, res) {
   try {
     const c = req.body.msg;
@@ -27,6 +37,11 @@ async function postMsg(req, res) {
   }
 }
 
+/**
+ * Sign a message
+ * @param {*} req Request
+ * @param {*} res Response
+ */
 async function signMsg(req, res) {
   try {
     const m = bc.hexToBigint(req.body.msg);
@@ -37,6 +52,11 @@ async function signMsg(req, res) {
   }
 }
 
+/**
+ * Get the home message
+ * @param {*} req Request
+ * @param {*} res Response
+ */
 async function getMsg(req, res) {
   try {
     res.status(200).send({msg: "Hello"})
